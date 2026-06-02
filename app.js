@@ -1,5 +1,4 @@
 // Portfolio Website JavaScript - Purple Theme with Glassmorphism
-
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all components
     initLoadingScreen();
@@ -15,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
 // Loading Screen
 function initLoadingScreen() {
     const loadingScreen = document.getElementById('loading-screen');
-    
     window.addEventListener('load', () => {
         setTimeout(() => {
             loadingScreen.classList.add('fade-out');
@@ -33,40 +31,24 @@ function initParticles() {
             particles: {
                 number: {
                     value: 80,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
+                    density: { enable: true, value_area: 800 }
                 },
                 color: {
                     value: ['#a855f7', '#c084fc', '#9333ea', '#7c3aed']
                 },
                 shape: {
                     type: 'circle',
-                    stroke: {
-                        width: 0,
-                        color: '#000000'
-                    }
+                    stroke: { width: 0, color: '#000000' }
                 },
                 opacity: {
                     value: 0.3,
                     random: true,
-                    anim: {
-                        enable: true,
-                        speed: 1,
-                        opacity_min: 0.1,
-                        sync: false
-                    }
+                    anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
                 },
                 size: {
                     value: 3,
                     random: true,
-                    anim: {
-                        enable: true,
-                        speed: 2,
-                        size_min: 0.1,
-                        sync: false
-                    }
+                    anim: { enable: true, speed: 2, size_min: 0.1, sync: false }
                 },
                 line_linked: {
                     enable: true,
@@ -83,36 +65,19 @@ function initParticles() {
                     straight: false,
                     out_mode: 'out',
                     bounce: false,
-                    attract: {
-                        enable: false,
-                        rotateX: 600,
-                        rotateY: 1200
-                    }
+                    attract: { enable: false, rotateX: 600, rotateY: 1200 }
                 }
             },
             interactivity: {
                 detect_on: 'canvas',
                 events: {
-                    onhover: {
-                        enable: true,
-                        mode: 'grab'
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: 'push'
-                    },
+                    onhover: { enable: true, mode: 'grab' },
+                    onclick: { enable: true, mode: 'push' },
                     resize: true
                 },
                 modes: {
-                    grab: {
-                        distance: 140,
-                        line_linked: {
-                            opacity: 0.5
-                        }
-                    },
-                    push: {
-                        particles_nb: 4
-                    }
+                    grab: { distance: 140, line_linked: { opacity: 0.5 } },
+                    push: { particles_nb: 4 }
                 }
             },
             retina_detect: true
@@ -172,15 +137,14 @@ function initNavigation() {
     });
 }
 
-// Typing animation for hero section
+// Typing animation toned down from architect/expert targets
 function initTypingAnimation() {
     const typingText = document.getElementById('typing-text');
     const texts = [
-        'Computer Science Student',
-        'Full-Stack Developer',
-        'Machine Learning Enthusiast',
-        'Problem Solver',
-        'Tech Innovator'
+        'QA Automation Engineer',
+        'Aspiring SDET',
+        'Java and Selenium Enthusiast',
+        'API Testing Engineer'
     ];
     
     let textIndex = 0;
@@ -228,7 +192,6 @@ function initScrollAnimations() {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate');
                 
-                // Special handling for skill items
                 if (entry.target.classList.contains('skill-item')) {
                     const delay = Array.from(entry.target.parentNode.children).indexOf(entry.target) * 100;
                     setTimeout(() => {
@@ -237,7 +200,6 @@ function initScrollAnimations() {
                     }, delay);
                 }
                 
-                // Special handling for timeline items
                 if (entry.target.classList.contains('timeline-item')) {
                     const delay = Array.from(entry.target.parentNode.children).indexOf(entry.target) * 200;
                     setTimeout(() => {
@@ -249,21 +211,18 @@ function initScrollAnimations() {
         });
     }, observerOptions);
 
-    // Observe elements for animation
     const animatedElements = document.querySelectorAll('.glass-card, .skill-item, .timeline-item, .project-card');
     animatedElements.forEach(el => {
         el.classList.add('fade-in-up');
         observer.observe(el);
     });
 
-    // Initial setup for timeline items
     document.querySelectorAll('.timeline-item').forEach(item => {
         item.style.opacity = '0';
         item.style.transform = 'translateX(-50px)';
         item.style.transition = 'all 0.6s ease-out';
     });
 
-    // Initial setup for skill items
     document.querySelectorAll('.skill-item').forEach(item => {
         item.style.opacity = '0';
         item.style.transform = 'translateY(30px) scale(0.9)';
@@ -274,9 +233,7 @@ function initScrollAnimations() {
 // Counter animations for statistics
 function initCounterAnimations() {
     const counters = document.querySelectorAll('.stat-number');
-    const observerOptions = {
-        threshold: 0.7
-    };
+    const observerOptions = { threshold: 0.7 };
 
     const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -320,25 +277,14 @@ function initContactForm() {
     const contactForm = document.querySelector('.contact-form');
     const formInputs = document.querySelectorAll('.form-input');
 
-    // Add floating label effect
     formInputs.forEach(input => {
-        input.addEventListener('focus', () => {
-            input.classList.add('focused');
-        });
-
+        input.addEventListener('focus', () => input.classList.add('focused'));
         input.addEventListener('blur', () => {
-            if (!input.value) {
-                input.classList.remove('focused');
-            }
+            if (!input.value) input.classList.remove('focused');
         });
-
-        // Check for pre-filled values
-        if (input.value) {
-            input.classList.add('focused');
-        }
+        if (input.value) input.classList.add('focused');
     });
 
-    // Form submission
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
@@ -348,7 +294,6 @@ function initContactForm() {
         const subject = formData.get('subject');
         const message = formData.get('message');
 
-        // Simple validation
         if (!name || !email || !subject || !message) {
             showNotification('Please fill in all fields', 'error');
             return;
@@ -359,7 +304,6 @@ function initContactForm() {
             return;
         }
 
-        // Simulate form submission
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
         
@@ -377,10 +321,8 @@ function initContactForm() {
     });
 }
 
-// Email validation
 function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
 // Notification system
@@ -392,89 +334,46 @@ function showNotification(message, type = 'info') {
             <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
             <span>${message}</span>
         </div>
-        <button class="notification__close">
-            <i class="fas fa-times"></i>
-        </button>
+        <button class="notification__close"><i class="fas fa-times"></i></button>
     `;
 
-    // Add notification styles
     notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 12px;
-        padding: 1rem 1.5rem;
-        color: white;
-        z-index: 10000;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-        max-width: 400px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        position: fixed; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px; padding: 1rem 1.5rem; color: white; z-index: 10000;
+        display: flex; align-items: center; gap: 1rem; transform: translateX(100%);
+        transition: transform 0.3s ease; max-width: 400px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     `;
 
-    if (type === 'success') {
-        notification.style.borderColor = 'rgba(168, 85, 247, 0.4)';
-    } else if (type === 'error') {
-        notification.style.borderColor = 'rgba(239, 68, 68, 0.4)';
-    }
+    if (type === 'success') notification.style.borderColor = 'rgba(168, 85, 247, 0.4)';
+    else if (type === 'error') notification.style.borderColor = 'rgba(239, 68, 68, 0.4)';
 
     document.body.appendChild(notification);
 
-    // Animate in
-    setTimeout(() => {
-        notification.style.transform = 'translateX(0)';
-    }, 100);
+    setTimeout(() => { notification.style.transform = 'translateX(0)'; }, 100);
 
-    // Close functionality
     const closeBtn = notification.querySelector('.notification__close');
-    closeBtn.style.cssText = `
-        background: none;
-        border: none;
-        color: white;
-        cursor: pointer;
-        padding: 0;
-        margin-left: auto;
-    `;
+    closeBtn.style.cssText = `background: none; border: none; color: white; cursor: pointer; padding: 0; margin-left: auto;`;
 
     const closeNotification = () => {
         notification.style.transform = 'translateX(100%)';
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.parentNode.removeChild(notification);
-            }
-        }, 300);
+        setTimeout(() => { if (notification.parentNode) notification.parentNode.removeChild(notification); }, 300);
     };
 
     closeBtn.addEventListener('click', closeNotification);
-
-    // Auto close after 5 seconds
     setTimeout(closeNotification, 5000);
 }
 
-// Smooth scrolling for navigation links
+// Smooth scrolling
 function initSmoothScrolling() {
     const navLinks = document.querySelectorAll('a[href^="#"]');
-    
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            
-            const targetId = link.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-            
+            const targetSection = document.getElementById(link.getAttribute('href').substring(1));
             if (targetSection) {
-                const headerOffset = 80;
-                const elementPosition = targetSection.offsetTop;
-                const offsetPosition = elementPosition - headerOffset;
-
                 window.scrollTo({
-                    top: offsetPosition,
+                    top: targetSection.offsetTop - 80,
                     behavior: 'smooth'
                 });
             }
@@ -482,47 +381,31 @@ function initSmoothScrolling() {
     });
 }
 
-// Add scroll-based parallax effects
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.profile-image-wrapper');
-    
-    parallaxElements.forEach(element => {
-        const speed = 0.5;
-        element.style.transform = `translateY(${scrolled * speed}px)`;
-    });
-});
-
-// Enhanced hover effects for project cards
+// Hover animation optimizations
 document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('mouseenter', () => {
         card.style.transform = 'translateY(-10px) scale(1.02)';
         card.style.boxShadow = '0 20px 60px rgba(168, 85, 247, 0.3)';
     });
-    
     card.addEventListener('mouseleave', () => {
         card.style.transform = 'translateY(0) scale(1)';
         card.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.3)';
     });
 });
 
-// Enhanced hover effects for skill items
 document.querySelectorAll('.skill-item').forEach(item => {
     item.addEventListener('mouseenter', () => {
         item.style.transform = 'translateY(-8px) scale(1.05)';
         item.style.boxShadow = '0 15px 40px rgba(168, 85, 247, 0.4)';
-        
         const icon = item.querySelector('i');
         if (icon) {
             icon.style.transform = 'scale(1.2) rotate(5deg)';
             icon.style.color = '#c084fc';
         }
     });
-    
     item.addEventListener('mouseleave', () => {
         item.style.transform = 'translateY(0) scale(1)';
         item.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.3)';
-        
         const icon = item.querySelector('i');
         if (icon) {
             icon.style.transform = 'scale(1) rotate(0deg)';
@@ -531,91 +414,10 @@ document.querySelectorAll('.skill-item').forEach(item => {
     });
 });
 
-// Add glitch effect to profile image on hover
-const profileImage = document.querySelector('.profile-image');
-if (profileImage) {
-    profileImage.addEventListener('mouseenter', () => {
-        profileImage.style.filter = 'hue-rotate(90deg) contrast(1.2)';
-        profileImage.style.transition = 'filter 0.3s ease';
-    });
-    
-    profileImage.addEventListener('mouseleave', () => {
-        profileImage.style.filter = 'none';
-    });
-}
-
-// Add floating animation to social links
-document.querySelectorAll('.social-link').forEach((link, index) => {
-    link.style.animationDelay = `${index * 0.1}s`;
-    link.style.animation = 'float 3s ease-in-out infinite';
-});
-
-// Add CSS for floating animation
+// Floating styles injection
 const floatingStyles = document.createElement('style');
 floatingStyles.textContent = `
-    @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-    }
-    
-    .notification__content {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
+    @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+    .notification__content { display: flex; align-items: center; gap: 0.5rem; }
 `;
 document.head.appendChild(floatingStyles);
-
-// Performance optimization: Throttle scroll events
-function throttle(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Apply throttling to scroll events
-const throttledScrollHandler = throttle(() => {
-    // Handle scroll-based animations here if needed
-}, 16); // ~60fps
-
-window.addEventListener('scroll', throttledScrollHandler);
-
-// Add easter egg: Konami code
-let konamiCode = [];
-const konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // Up, Up, Down, Down, Left, Right, Left, Right, B, A
-
-document.addEventListener('keydown', (e) => {
-    konamiCode.push(e.keyCode);
-    
-    if (konamiCode.length > konami.length) {
-        konamiCode.shift();
-    }
-    
-    if (konamiCode.join(',') === konami.join(',')) {
-        // Easter egg activated!
-        document.body.style.animation = 'rainbow 2s linear infinite';
-        showNotification('🎉 Easter egg activated! You found the secret!', 'success');
-        
-        setTimeout(() => {
-            document.body.style.animation = '';
-        }, 5000);
-        
-        konamiCode = [];
-    }
-});
-
-// Add rainbow animation for easter egg
-const rainbowStyles = document.createElement('style');
-rainbowStyles.textContent = `
-    @keyframes rainbow {
-        0% { filter: hue-rotate(0deg); }
-        100% { filter: hue-rotate(360deg); }
-    }
-`;
-document.head.appendChild(rainbowStyles);
