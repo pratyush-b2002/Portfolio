@@ -57,6 +57,7 @@
   --purple-400: #c084fc;
   --purple-500: #a855f7;
   --purple-600: #9333ea;
+  --purple-300: #d8b4fe;
   
   /* Glass Effects UI Elements */
   --glass-bg: rgba(255, 255, 255, 0.06);
@@ -268,6 +269,202 @@ textarea.form-input { min-height: 110px; resize: vertical; }
 /* Element Animation Trigger Engine Utility Sets */
 .fade-in-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 .fade-in-up.animate { opacity: 1; transform: translateY(0); }
+
+
+/* =========================================================
+   Resume Download Section
+   ========================================================= */
+.btn-resume {
+  background: rgba(168, 85, 247, 0.12);
+  border-color: rgba(192, 132, 252, 0.35);
+}
+
+.btn-resume:hover {
+  border-color: var(--purple-400);
+  color: var(--purple-400);
+  box-shadow: 0 8px 25px rgba(168, 85, 247, 0.25);
+}
+
+.resume-section {
+  position: relative;
+}
+
+.resume-card {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  padding: 2rem 2.2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.resume-card::before {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  right: -90px;
+  top: -110px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.22), transparent 68%);
+  pointer-events: none;
+}
+
+.resume-icon {
+  width: 76px;
+  height: 76px;
+  min-width: 76px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(168, 85, 247, 0.13);
+  border: 1px solid rgba(192, 132, 252, 0.35);
+  color: var(--purple-400);
+  font-size: 2rem;
+  box-shadow: 0 10px 30px rgba(168, 85, 247, 0.15);
+}
+
+.resume-content {
+  flex: 1;
+}
+
+.resume-label {
+  display: inline-block;
+  color: var(--purple-400);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.45rem;
+}
+
+.resume-content h3 {
+  font-size: 1.35rem;
+  margin-bottom: 0.45rem;
+}
+
+.resume-content p {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.92rem;
+  margin-bottom: 0.9rem;
+}
+
+.resume-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.resume-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.76rem;
+}
+
+.resume-meta i {
+  color: var(--purple-400);
+}
+
+.resume-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  min-width: 185px;
+  position: relative;
+  z-index: 1;
+}
+
+.resume-actions .btn-glass {
+  justify-content: center;
+  padding: 10px 18px;
+  font-size: 0.88rem;
+}
+
+.certification-featured {
+  justify-content: space-between;
+}
+
+.certification-featured > div {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.9rem;
+  align-items: center;
+}
+
+.certification-featured > div i {
+  grid-row: span 2;
+}
+
+.certification-featured h4 {
+  margin-bottom: 0.25rem;
+}
+
+.cert-link {
+  color: var(--purple-400);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+.cert-link:hover {
+  color: #e0a7ff;
+}
+
+/* Responsive Resume Layout */
+@media (max-width: 900px) {
+  .resume-card {
+    flex-wrap: wrap;
+  }
+
+  .resume-actions {
+    flex-direction: row;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .resume-actions .btn-glass {
+    flex: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .resume-card {
+    align-items: flex-start;
+    padding: 1.5rem;
+  }
+
+  .resume-icon {
+    width: 62px;
+    height: 62px;
+    min-width: 62px;
+    font-size: 1.6rem;
+  }
+
+  .resume-content {
+    min-width: calc(100% - 80px);
+  }
+
+  .resume-actions {
+    flex-direction: column;
+  }
+
+  .resume-actions .btn-glass {
+    width: 100%;
+  }
+
+  .certification-featured {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .cert-link {
+    margin-top: 0.6rem;
+  }
+}
 
 /* Responsive Media Control Queries Rules */
 @media (max-width: 768px) {

@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     initCounterAnimations();
     initContactForm();
+    initResumeInteractions();
     initSmoothScrolling();
 });
 
@@ -142,9 +143,9 @@ function initTypingAnimation() {
     const typingText = document.getElementById('typing-text');
     const texts = [
         'QA Automation Engineer',
-        'Aspiring SDET',
-        'Java and Selenium Enthusiast',
-        'API Testing Engineer'
+        'Java • Selenium • Appium',
+        'Web & Mobile Automation',
+        'AI-Assisted Quality Engineering'
     ];
     
     let textIndex = 0;
@@ -362,6 +363,19 @@ function showNotification(message, type = 'info') {
 
     closeBtn.addEventListener('click', closeNotification);
     setTimeout(closeNotification, 5000);
+}
+
+// Resume download / preview interactions
+function initResumeInteractions() {
+    const resumeLinks = document.querySelectorAll('a[href="resume.pdf"]');
+
+    resumeLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (link.hasAttribute('download')) {
+                showNotification('Resume download started.', 'success');
+            }
+        });
+    });
 }
 
 // Smooth scrolling
